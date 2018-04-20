@@ -41,6 +41,8 @@ gem 'rails_12factor', '~> 0.0.3'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-easing-rails'
 gem 'font-awesome-rails'
+gem 'pry-rails'
+gem 'simple_form', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
