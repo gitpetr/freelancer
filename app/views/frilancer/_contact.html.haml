@@ -6,16 +6,25 @@
         %hr.star-primary/
     .row
       .col-lg-8.col-lg-offset-2
-        / To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.
-        / The form should work on most web servers, but if the form is not working you may need to configure your web server differently.
-        = simple_form_for Contact.new, { action: contacts_path, method: 'post', id: 'contactForm'} do |f|
-          .floating-label-form-group
-            = f.input :name, label: '', input_html: { id: 'name', "data-validation-required-message": "Please enter your name.", placeholder: "Name", required: ""  }
-          .floating-label-form-group
-            = f.input :phone, label: '', input_html: { id: 'phone', "data-validation-required-message": "Please enter your phone number.", placeholder: "Phone Number", required: ""  }
-          .floating-label-form-group
-            = f.input :email, label: '', input_html: { id: 'email', "data-validation-required-message": "Please enter your email.", placeholder: "Email Address", required: "" }
-          .floating-label-form-group
-            = f.input :message, label: '', input_html: { "data-validation-required-message": "Please enter your message.", placeholder: "Message", required: "", rows: 5 }
+        = simple_form_for Contact.new, { action: contacts_path, method: 'post', id: 'contactForm', novalidate: 'novalidate', name: 'sentMessage'} do |f|
+          .row.control-group
+            .form-group.col-xs-12.floating-label-form-group.controls
+              = f.input :name, label: 'Name', input_html: { id: 'name', "data-validation-required-message": "Please enter your name.", placeholder: "Name", required: "required"  }
+              %p.help-block.text-danger
+          .row.control-group
+            .form-group.col-xs-12.floating-label-form-group.controls
+              = f.input :email, label: 'Email Address', input_html: { id: 'email', "data-validation-required-message": "Please enter your email.", placeholder: "Email Address", required: "required" }
+              %p.help-block.text-danger
+          .row.control-group
+            .form-group.col-xs-12.floating-label-form-group.controls
+              = f.input :phone, label: 'Phone Number', input_html: { id: 'phone', "data-validation-required-message": "Please enter your phone number.", placeholder: "Phone Number", required: "required"  }
+              %p.help-block.text-danger
+          .row.control-group
+            .form-group.col-xs-12.floating-label-form-group.controls
+              = f.input :message, label: 'Message', input_html: { id: 'message', "data-validation-required-message": "Please enter your message.", placeholder: "Message", required: "required", rows: 5 }
+              %p.help-block.text-danger
           %br
-          = f.button :submit, 'Send', class: 'btn btn-success btn-lg'
+          .succes
+          .row
+            .form-group.col-xs-12
+              = f.button :submit, 'Send', class: 'btn btn-success btn-lg', id: 'sendMessageButton'
