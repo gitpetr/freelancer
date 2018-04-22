@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
       UserMailer.welcome_email(@contact).deliver_later
       redirect_to root_path
     else
-      render root_path
+      redirect_to root_path
     end
    end
 
